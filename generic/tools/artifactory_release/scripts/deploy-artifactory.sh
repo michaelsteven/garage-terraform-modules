@@ -63,7 +63,6 @@ helm template "${ARTIFACTORY_CHART}" \
     --namespace "${NAMESPACE}" \
     --name "artifactory" \
     --set "${VALUES}" \
-    --set "ingress.hosts.0=${INGRESS_HOST}" \
     --set "serviceAccount.create=false" \
     --set "serviceAccount.name=artifactory" \
     --set "artifactory.uid=0" \
