@@ -40,6 +40,7 @@ resource "null_resource" "create_namespaces" {
 }
 
 resource "null_resource" "create_cluster_pull_secret_iks" {
+  count = "${var.cluster_type != "openshift" ? "1" : "0"}"
   provisioner "local-exec" {
     command = "${path.module}/scripts/cluster-pull-secret-apply.sh ${var.cluster_name}"
 
