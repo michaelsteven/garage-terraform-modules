@@ -22,9 +22,7 @@ if [[ -z "${EXCLUDE_POD_NAME}" ]]; then
 fi
 
 POD_NAME=$(kubectl get pods -n ${NAMESPACE} | grep -v "${EXCLUDE_POD_NAME}" | grep -m 1 "${NAME}" | sed -E "s/([a-zA-Z0-9-]+) +.*/\1/g")
-echo "pod name=${POD_NAME}"
 STATUS=$(kubectl get pod/${POD_NAME} -n ${NAMESPACE} -o jsonpath="{ .status.phase }")
-echo "status=${STATUS}"
 if [[ "Running" == "${STATUS}" ]]; then
     exit 0
 else
