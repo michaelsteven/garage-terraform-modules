@@ -39,8 +39,8 @@ SECRET_OUTPUT_YAML="${ARTIFACTORY_KUSTOMIZE}/secret.yaml"
 
 OUTPUT_YAML="${TMP_DIR}/artifactory.yaml"
 
-oc create serviceaccount -n ${NAMESPACE} artifactory
-oc adm policy add-scc-to-user privileged -n ${NAMESPACE} -z artifactory
+#oc create serviceaccount -n ${NAMESPACE} artifactory
+#oc adm policy add-scc-to-user privileged -n ${NAMESPACE} -z artifactory
 
 echo "*** Setting up kustomize directory"
 mkdir -p "${KUSTOMIZE_DIR}"
@@ -64,7 +64,7 @@ helm template "${ARTIFACTORY_CHART}" \
     --name "artifactory" \
     --set "${VALUES}" \
     --set "serviceAccount.create=false" \
-    --set "serviceAccount.name=artifactory" \
+    --set "serviceAccount.name=artifactory-artifactory" \
     --set "artifactory.uid=0" \
     --values "${VALUES_FILE}" > "${ARTIFACTORY_OUTPUT_YAML}"
 
