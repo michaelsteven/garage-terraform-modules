@@ -80,11 +80,10 @@ persistence:
   ## If defined, PVC must be created manually before volume will be bound
   # ExistingClaim:
   ## jenkins data Persistent Volume Storage Class
-  #storageClass: "ibmc-file-gold"
 
   annotations: {}
   accessMode: ReadWriteOnce
-  size: 5Gi
+  size: 20Gi
   volumes:
   #  - name: nothing
   #    emptyDir: {}
@@ -104,11 +103,3 @@ rbac:
   create: true
   resources:
     - name: "secrets"
-
-#master:
-#  numExecutors: 5
-#  ingress:
-#    enabled: true
-#
-#persistence:
-#  storageClass: "ibmc-file-gold"
