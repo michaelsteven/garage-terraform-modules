@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#!/usr/bin/env bash
-
 SCRIPT_DIR=$(cd $(dirname $0); pwd -P);
 
 SONARQUBE_SECRET_CHART="$1"
@@ -61,7 +59,9 @@ PLUGIN_YAML=$(echo $PLUGINS | sed -E "s/[[](.*)[]]/{\1}/g")
 
 VALUES=ingress.hosts.0.name="${SONARQUBE_HOST}"
 if [[ -n "${TLS_SECRET_NAME}" ]]; then
-    VALUES="${VALUES},ingress.tls[0].secretName=${TLS_SECRET_NAME},ingress.tls[0].hosts[0]=${SONARQUBE_HOST}"
+    VALUES="${VALUES},ingress.tls[0].secretName=${TLS_SECRET_NAME}"
+    VALUES="${VALUES},ingress.tls[0].hosts[0]=${SONARQUBE_HOST}"
+    VALUES="${VALUES},ingress.annotations.ingress\.bluemix\.net/redirect-to-https='True'"
 fi
 
 echo "*** Generating sonarqube yaml from helm template with plugins ${PLUGIN_YAML}"
