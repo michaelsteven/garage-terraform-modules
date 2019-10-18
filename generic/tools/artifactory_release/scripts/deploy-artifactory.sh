@@ -39,9 +39,6 @@ SECRET_OUTPUT_YAML="${ARTIFACTORY_KUSTOMIZE}/secret.yaml"
 
 OUTPUT_YAML="${TMP_DIR}/artifactory.yaml"
 
-#oc create serviceaccount -n ${NAMESPACE} artifactory
-#oc adm policy add-scc-to-user privileged -n ${NAMESPACE} -z artifactory
-
 echo "*** Setting up kustomize directory"
 mkdir -p "${KUSTOMIZE_DIR}"
 cp -R "${KUSTOMIZE_TEMPLATE}" "${KUSTOMIZE_DIR}"
