@@ -45,20 +45,24 @@ variable "cluster_type" {
 
 variable "postgresql_user" {
   type        = "string"
+  default     = "postgres"
   description = "String specifying the postgresql user"
 }
 
 variable "postgresql_password" {
   type        = "string"
+  default     = "postgres"
   description = "String specifying the postgresql password"
 }
 
 variable "postgresql_database" {
   type        = "string"
+  default     = "postgres"
   description = "String specifying the postgresql database"
 }
 
 variable "volume_capacity" {
   type        = "string"
+  default     = "5Gi"
   description = "String specifying the volume capacity"
 }
