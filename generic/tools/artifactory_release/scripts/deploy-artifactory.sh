@@ -60,6 +60,9 @@ helm template "${ARTIFACTORY_CHART}" \
     --namespace "${NAMESPACE}" \
     --name "artifactory" \
     --set "${VALUES}" \
+    --set "serviceAccount.create=false" \
+    --set "serviceAccount.name=artifactory-artifactory" \
+    --set "artifactory.uid=0" \
     --values "${VALUES_FILE}" > "${ARTIFACTORY_OUTPUT_YAML}"
 
 if [[ -n "${TLS_SECRET_NAME}" ]]; then
@@ -71,7 +74,7 @@ fi
 echo "*** Generating artifactory-access yaml from helm template into ${SECRET_OUTPUT_YAML}"
 helm template "${SECRET_CHART}" \
     --namespace "${NAMESPACE}" \
-    --set url="${URL}" > "${SECRET_OUTPUT_YAML}"
+    --set url="http://${INGRESS_HOST}" > "${SECRET_OUTPUT_YAML}"
 
 echo "*** Building final kube yaml from kustomize into ${OUTPUT_YAML}"
 kustomize build "${ARTIFACTORY_KUSTOMIZE}" > "${OUTPUT_YAML}"
