@@ -36,7 +36,6 @@ output "config_file_path" {
 
 output "type" {
   value       = "openshift"
-  //value       = "${data.local_file.cluster_type.content}"
   description = "The type of cluster (openshift or kubernetes)"
   depends_on  = ["null_resource.ibmcloud_apikey_release"]
 }
@@ -57,7 +56,6 @@ output "ibmcloud_api_key" {
 }
 
 output "tls_secret_name" {
-  value       = "os_cluster_output_tls_secret_name"
-  //value       = "${data.local_file.tls_secret_name.content}"
+  value       = ""
   description = "The name of the secret containin the tls information for the cluster"
 }
