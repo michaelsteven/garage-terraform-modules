@@ -75,5 +75,11 @@ variable "cluster_exists" {
 variable "login_user" {
   type        = "string"
   description = "The username to log in to openshift"
-  default     = "apikey"
+  default     = "kubeadmin"
+}
+
+variable "server_url" {
+  type        = "string"
+  description = "The url to the server"
+  default     = "https://api.crc.testing:6443"
 }
