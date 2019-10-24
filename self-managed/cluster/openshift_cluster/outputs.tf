@@ -19,12 +19,12 @@ output "region" {
 }
 
 output "ingress_hostname" {
-  value       = "apps-crc.testing"
+  value       = "${var.ingress_subdomain}"
   description = "Ingress hostname of the cluster."
 }
 
 output "server_url" {
-  value       = "crc.testing"
+  value       = "${var.server_url}"
   description = "The url of the control server."
 }
 
@@ -56,6 +56,6 @@ output "ibmcloud_api_key" {
 }
 
 output "tls_secret_name" {
-  value       = ""
+  value       = "${var.tls_secret_name}"
   description = "The name of the secret containin the tls information for the cluster"
 }

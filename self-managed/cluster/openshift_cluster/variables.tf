@@ -83,3 +83,11 @@ variable "server_url" {
   description = "The url to the server"
   default     = "https://api.crc.testing:6443"
 }
+
+variable "ingress_subdomain" {
+  default = "apps-crc.testing"
+}
+
+variable "tls_secret_name" {
+  default = ""
+}
