@@ -2,9 +2,7 @@ locals {
   tmp_dir                = "${path.cwd}/.tmp"
   ingress_host           = "artifactory.${var.cluster_ingress_hostname}"
   ingress_url            = "http://${local.ingress_host}"
-  values_file_default    = "${path.module}/artifactory-values.yaml"
-  values_file_openshift  = "${path.module}/artifactory-values-openshift.yaml"
-  values_file            = "${var.cluster_type == "openshift" ? local.values_file_openshift : local.values_file_default}"
+  values_file            = "${path.module}/artifactory-values.yaml"
   config_name            = "artifactory-config"
   secret_name            = "artifactory-access"
 }
