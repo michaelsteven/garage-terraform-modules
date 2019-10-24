@@ -7,9 +7,7 @@ locals {
   ingress_url            = "http://${local.ingress_host}"
   secret_name            = "sonarqube-access"
   config_name            = "sonarqube-config"
-  values_file_default    = "${path.module}/sonarqube-values.yaml"
-  values_file_openshift  = "${path.module}/sonarqube-values-openshift.yaml"
-  values_file            = "${var.cluster_type == "openshift" ? local.values_file_openshift : local.values_file_default}" 
+  values_file            = "${path.module}/sonarqube-values.yaml"
   kustomize_template     = "${path.module}/kustomize/sonarqube"
   volume_capacity        = "${var.volume_capacity}"
 }

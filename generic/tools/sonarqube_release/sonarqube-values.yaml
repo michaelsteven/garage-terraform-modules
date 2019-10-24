@@ -15,6 +15,7 @@ ingress:
 persistence:
   enabled: true
   accessMode: ReadWriteOnce
+  size: 2Gi
 
 postgresql:
   # Enable to deploy the PostgreSQL chart
