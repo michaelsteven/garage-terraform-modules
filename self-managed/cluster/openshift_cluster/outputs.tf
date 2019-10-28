@@ -31,13 +31,13 @@ output "server_url" {
 output "config_file_path" {
   value       = "${local.config_file_path}"
   description = "Path to the config file for the cluster."
-  depends_on  = ["null_resource.ibmcloud_apikey_release"]
+  depends_on  = ["null_resource.oc_login"]
 }
 
 output "type" {
   value       = "openshift"
   description = "The type of cluster (openshift or kubernetes)"
-  depends_on  = ["null_resource.ibmcloud_apikey_release"]
+  depends_on  = ["null_resource.oc_login"]
 }
 
 output "login_user" {
