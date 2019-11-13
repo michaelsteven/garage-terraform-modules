@@ -2,6 +2,7 @@
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd -P)
 CHART_DIR=$(cd "${SCRIPT_DIR}/../charts"; pwd -P)
+URL="http://${INGRESS_HOST}"
 
 if [[ -z "${TMP_DIR}" ]]; then
   TMP_DIR=./tmp
@@ -21,5 +22,6 @@ helm template ${CHART_DIR}/tekton-config \
     --name "tekton" \
     --namespace "${NAMESPACE}" \
     --set name="tekton" \
-    --set url=${INGRESS_HOST} > ${YAML_OUTPUT}
+    --set hostname="${INGRESS_HOST}" \
+    --set url="${URL}" > ${YAML_OUTPUT}
 kubectl apply --namespace ${NAMESPACE} -f ${YAML_OUTPUT}

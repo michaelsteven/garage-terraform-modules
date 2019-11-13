@@ -9,5 +9,6 @@ component: "tools"
 
 name: ""
 url: ""
+hostname: ""
 username: ""
 password: ""

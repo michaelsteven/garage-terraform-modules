@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/instance: {{ include "tool-config.name" . }}
 spec:
   rules:
-    - host: {{.Values.url}}
+    - host: {{.Values.hostname}}
       http:
         paths:
           - path: /
