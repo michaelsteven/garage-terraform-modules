@@ -12,7 +12,6 @@ resource "null_resource" "tekton_sub" {
 
     environment = {
       KUBECONFIG_IKS = "${var.cluster_config_file_path}"
-      TMP_DIR        = "${path.cwd}/.tmp"
     }
   }
 }
@@ -25,7 +24,6 @@ resource "null_resource" "tekton_dashboard" {
 
     environment = {
       KUBECONFIG_IKS = "${var.cluster_config_file_path}"
-      TMP_DIR        = "${path.cwd}/.tmp"
     }
   }
 }
